@@ -1,8 +1,17 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { RootState } from "../../redux";
+import { numberOfItems } from "../../helpers/numberOfItems";
+import { connect } from "react-redux";
 
-export const LinkMenu: React.FC = () => {
+const mapStateToProps = (state: RootState) => ({
+  numberOfItems: numberOfItems(state)
+});
+
+type Props = ReturnType<typeof mapStateToProps>;
+
+const UnconnectedLinkMenu: React.FC<Props> = ({ numberOfItems }) => {
   return (
     <Menu>
       <Menu.Menu position="right">
@@ -10,7 +19,7 @@ export const LinkMenu: React.FC = () => {
           <Link to="/shop">Shop</Link>
         </Menu.Item>
         <Menu.Item name="cart">
-          <Link to="/cart">Cart (0)</Link>
+          <Link to="/cart">Cart ({numberOfItems})</Link>
         </Menu.Item>
         <Menu.Item name="login">
           <Link to="/login">Login</Link>
@@ -19,3 +28,5 @@ export const LinkMenu: React.FC = () => {
     </Menu>
   );
 };
+
+export const LinkMenu = connect(mapStateToProps)(UnconnectedLinkMenu);

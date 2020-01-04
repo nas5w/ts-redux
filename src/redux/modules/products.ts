@@ -3,12 +3,6 @@ import { Dispatch, AnyAction } from "redux";
 import { RootState } from "..";
 import { sampleProducts } from "../../data/sampleProducts";
 
-export type ProductState = {
-  products: Product[];
-  loading: boolean;
-  cart: CartItem[];
-};
-
 const initialState: ProductState = { products: [], loading: false, cart: [] };
 
 const setProducts = (products: Product[]) => {

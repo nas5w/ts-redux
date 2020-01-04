@@ -1,13 +1,8 @@
 import { typedAction } from "../helpers";
 
-export type UserState =
-  | {
-      loggedIn: true;
-      username: string;
-    }
-  | { loggedIn: false };
+export type UserState = { username: string | null };
 
-const initialState: UserState = { loggedIn: false };
+const initialState: UserState = { username: null };
 
 const login = (username: string) => {
   return typedAction("user/LOGIN", username);
@@ -25,9 +20,9 @@ export function userReducer(
 ): UserState {
   switch (action.type) {
     case "user/LOGIN":
-      return { loggedIn: true, username: action.payload };
+      return { username: action.payload };
     case "user/LOGOUT":
-      return { loggedIn: false };
+      return { username: null };
     default:
       return state;
   }

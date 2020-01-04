@@ -23,8 +23,10 @@ type Props = ReturnType<typeof mapStateToProps> &
 
 const UnconnectedShop: React.FC<Props> = ({ loadProducts, products }) => {
   useEffect(() => {
-    loadProducts();
-  }, [loadProducts]);
+    if (products.length === 0) {
+      loadProducts();
+    }
+  }, [loadProducts, products]);
 
   return (
     <Container>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Header } from "semantic-ui-react";
+import { Container, Header, Card } from "semantic-ui-react";
 import { RootState } from "../../../redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { loadProducts } from "../../../redux/modules/products";
@@ -29,9 +29,11 @@ const UnconnectedShop: React.FC<Props> = ({ loadProducts, products }) => {
   return (
     <Container>
       <Header as="h2">Shop</Header>
-      {products.map(product => (
-        <ProductCard product={product} />
-      ))}
+      <Card.Group>
+        {products.map(product => (
+          <ProductCard product={product} />
+        ))}
+      </Card.Group>
     </Container>
   );
 };

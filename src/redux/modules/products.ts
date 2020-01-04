@@ -9,7 +9,7 @@ const setProducts = (products: Product[]) => {
   return typedAction("products/SET_PRODUCTS", products);
 };
 
-const addToCart = (product: Product, quantity: number) => {
+export const addToCart = (product: Product, quantity: number) => {
   return typedAction("products/ADD_TO_CART", { product, quantity });
 };
 

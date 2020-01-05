@@ -10,11 +10,7 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <Card>
-      <Image
-        src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
-        wrapped
-        ui={false}
-      />
+      <Image src={product.img} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{product.name}</Card.Header>
         <Card.Description>{priceFormat(product.price)}</Card.Description>
